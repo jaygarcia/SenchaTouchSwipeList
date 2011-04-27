@@ -1,14 +1,20 @@
 Ext.ns('Ext.ux');
 
 
-Ext.ux.ListSwipe = Ext.extend(Object, {
+Ext.ux.ListSwipe = Ext.extend(Ext.Container, {
+    swipeDirection : 'left',
+    defaultType    : 'button',
+    initComponent : function() {
+
+        Ext.ux.ListSwipe.superclass.initComponent.call(this);
+    },
     init : function(parent) {
         this.parent = parent;
         Ext.applyIf(parent, this.parentOverrides);
 
-        this.on('itemswipe', this.onParentItemSwipe, this);    
+        parent.on('itemswipe', this.onParentItemSwipe, this);
     },
-    onParentItemSwipe : function() {
+    onParentItemSwipe : function(list, index, el, evtObj) {
 
     },
     parentOverrides : {
