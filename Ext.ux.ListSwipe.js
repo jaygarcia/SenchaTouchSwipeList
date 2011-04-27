@@ -15,6 +15,10 @@ Ext.ux.ListSwipe = Ext.extend(Ext.Container, {
         parent.on('itemswipe', this.onParentItemSwipe, this);
     },
     onParentItemSwipe : function(list, index, el, evtObj) {
+        if (evtObj.direction !== this.swipeDirection) {
+            return;
+        }
+        console.log(evtObj);
 
     },
     parentOverrides : {
