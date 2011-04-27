@@ -24,15 +24,15 @@ Ext.ux.ListSwipe = Ext.extend(Ext.Container, {
         parent.on('itemswipe', this.onParentItemSwipe, this);
     },
     onParentItemSwipe : function(list, index, el, evtObj) {
-		var ele = Ext.fly(el);
-		
+		this.alignAndShowItem(el);
     },
     parentOverrides : {
 
     },
 	
-	show: function(anim){
-		Ext.ux.ListSwipe.superclass.show.apply(this, arguments);
+	alignAndShowItem : function(el){
+		var ele = Ext.fly(el);
+		this.show();
 		this.setSize(ele.getSize());
 		this.getEl().setXY(ele.getXY());
 	}
