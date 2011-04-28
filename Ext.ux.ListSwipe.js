@@ -24,34 +24,32 @@ Ext.ux.ListSwipe = Ext.extend(Ext.Container, {
         parent.on('itemswipe', this.onParentItemSwipe, this);
     },
     onParentItemSwipe : function(list, index, el, evtObj) {
-//        if (evtObj.direction !== this.swipeDirection) {
-//            return;
-//        }
+        if (evtObj.direction !== this.swipeDirection) {
+            return;
+        }
         if (! this.anims) {
             this.anims  = this.initAnims();
         }
         console.log(this.anims.slideOut);
-
-
         Ext.Anim.run(Ext.get(el), this.anims.slideOut);
 
 		this.alignAndShowItem(el);
     },
 	alignAndShowItem : function(el){
-		var ele = Ext.fly(el);
+		var ele = Ext.get(el);
 		this.show();
 		this.setSize(ele.getSize());
 		this.getEl().setXY(ele.getXY());
     },
     initAnims : function() {
         var thisList = this.parent;
+
         return {
             slideIn : new Ext.Anim({
                 duration: 250,
                 autoClear: false,
                 before: function(el){
-                    var elLeft = el.getLeft(),
-                        elTop  = el.getTop();
+                    var elTop  = el.getTop();
 
                     this.to = {
                         left : '0px',
@@ -83,9 +81,6 @@ Ext.ux.ListSwipe = Ext.extend(Ext.Container, {
                 }
             })
         }
-    },
-    parentOverrides : {
-
     }
 });
 //

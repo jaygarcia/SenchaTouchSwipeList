@@ -4,6 +4,8 @@ Ext.setup({
         var genList = function() {
 
           return new Ext.List({
+                style   : 'margin-left: 20px',
+                width   : 200,
                 store   : 'myStore',
                 itemTpl : '{name}',
                 plugins : [
