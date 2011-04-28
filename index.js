@@ -1,35 +1,41 @@
 Ext.setup({
 
     onReady : function() {
-        var list = new Ext.List({
-            store   : 'myStore',
-            itemTpl : '{name}',
-            plugins : [
-                new Ext.ux.ListSwipe({
+        var genList = function() {
 
-                    items : [
-                        {
-                            text : 'm1'
-                        },
-                        {
-                            text : 'm2'
-                        },
-                        {
-                            text : 'm3'
-                        },
-                        {
-                            text : 'm4'
-                        }
-                    ]
-                })
-            ]
-        });
+          return new Ext.List({
+                store   : 'myStore',
+                itemTpl : '{name}',
+                plugins : [
+                    new Ext.ux.ListSwipe({
+
+                        items : [
+                            {
+                                text : 'm1'
+                            },
+                            {
+                                text : 'm2'
+                            },
+                            {
+                                text : 'm3'
+                            },
+                            {
+                                text : 'm4'
+                            }
+                        ]
+                    })
+                ]
+          });
+        }
 
 
         new Ext.Panel({
             fullscreen : true,
-            layout     : 'fit',
-            items      : [ list ]
+            layout     : {
+                type  : 'hbox',
+                align : 'stretch'
+            },
+            items      : [ genList(), genList() ]
         })
     }
 });
