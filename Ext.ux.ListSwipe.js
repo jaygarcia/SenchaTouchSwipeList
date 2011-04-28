@@ -35,6 +35,10 @@ Ext.ux.ListSwipe = Ext.extend(Ext.Container, {
 		this.show();
 		this.setSize(ele.getSize());
 		this.getEl().setXY(ele.getXY());
+		Ext.Anim.run(this.getEl(), 'slide', {
+			duration: 250,
+			out: false
+		});
 	}
 	
 });
